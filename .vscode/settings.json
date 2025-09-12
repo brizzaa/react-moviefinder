@@ -1,6 +1,0 @@
-{
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.inlineSuggest.edits.renderSideBySide": "never",
-    "editor.inlineSuggest.edits.allowCodeShifting": "never",
-    "editor.inlineSuggest.edits.showCollapsed": true
-}
