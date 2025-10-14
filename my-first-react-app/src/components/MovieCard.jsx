@@ -2,9 +2,13 @@ import React from "react";
 
 const MovieCard = ({
   movie: { title, vote_average, poster_path, release_date, original_language },
+  onClick,
 }) => {
   return (
-    <div className="bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10">
+    <div
+      className="bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10 cursor-pointer hover:bg-dark-100/80 transition-all duration-200 hover:scale-105"
+      onClick={onClick}
+    >
       <img
         src={
           poster_path

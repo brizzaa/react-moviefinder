@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import Filter from "./components/Filter";
+import MovieDetailsModal from "./components/MovieDetailsModal";
 import { updateSearchCount, getTrendingMovies } from "./appwrite.js";
 import { useDebounce } from "react-use";
 
@@ -40,6 +41,8 @@ const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useDebounce(
     () => {
@@ -170,6 +173,16 @@ const App = () => {
     setSidebarOpen(isOpen);
   };
 
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedMovie(null);
+  };
+
   useEffect(() => {
     fetchMovies(debouncedSearchTerm, activeFilters, currentPage);
   }, [debouncedSearchTerm, activeFilters, currentPage]);
@@ -274,7 +287,11 @@ const App = () => {
                 <>
                   <ul className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {movieList.map((movie) => (
-                      <MovieCard key={movie.id} movie={movie} />
+                      <MovieCard
+                        key={movie.id}
+                        movie={movie}
+                        onClick={() => handleMovieClick(movie)}
+                      />
                     ))}
                   </ul>
 
@@ -317,6 +334,13 @@ const App = () => {
           </div>
         </div>
       </div>
+
+      {/* Movie Details Modal */}
+      <MovieDetailsModal
+        movie={selectedMovie}
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+      />
     </main>
   );
 };
