@@ -4,9 +4,9 @@ import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import Filter from "./components/Filter";
 import MovieDetailsModal from "./components/MovieDetailsModal";
-import { updateSearchCount, getTrendingMovies } from "./appwrite.js";
 import { useDebounce } from "react-use";
-import { getMovieTitle, getMovieOverview } from "./utils/italianContent.js";
+import { updateSearchCount, getTrendingMovies } from "./appwrite.js";
+import { getMovieTitle } from "./utils/italianContent.js";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMBD_API_KEY;
@@ -141,10 +141,6 @@ const App = () => {
 
       setMovieList(data.results || []);
       setTotalPages(Math.min(data.total_pages || 1, 500));
-
-      if (query && data.results && data.results.length > 0) {
-        await updateSearchCount(query, data.results[0]);
-      }
     } catch (error) {
       console.error("Error fetching movies:", error);
     } finally {
@@ -173,6 +169,9 @@ const App = () => {
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
     setModalOpen(true);
+
+    updateSearchCount(getMovieTitle(movie), movie);
+    console.log(movie);
   };
 
   const handleCloseModal = () => {
