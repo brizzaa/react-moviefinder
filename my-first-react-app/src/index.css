@@ -49,15 +49,6 @@
 }
 
 @layer components {
-  /* pattern and wrapper moved inline with Tailwind classes */
-
-  /* trending styles moved inline in App.jsx */
-
-  /* search styles moved inline in Search.jsx */
-
-  /* all-movies styles moved inline in App.jsx */
-
-  /* movie-card styles moved inline into MovieCard.jsx */
 }
 
 @utility text-gradient {

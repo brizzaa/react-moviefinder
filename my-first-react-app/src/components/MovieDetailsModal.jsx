@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { getMovieTitle, getMovieOverview } from "../utils/italianContent.js";
 
 const MovieDetailsModal = ({ movie, isOpen, onClose }) => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -22,7 +23,7 @@ const MovieDetailsModal = ({ movie, isOpen, onClose }) => {
 
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie.id}?append_to_response=credits,videos`,
+        `https://api.themoviedb.org/3/movie/${movie.id}?append_to_response=credits,videos&language=it-IT`,
         {
           method: "GET",
           headers: {
@@ -116,13 +117,13 @@ const MovieDetailsModal = ({ movie, isOpen, onClose }) => {
                             ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
                             : "/no-movie.png"
                         }
-                        alt={movie.title}
+                        alt={getMovieTitle(movie)}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-dark-100 via-dark-100/50 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <h1 className="text-4xl font-bold text-white mb-2">
-                          {movie.title}
+                          {getMovieTitle(movie)}
                         </h1>
                         <div className="flex items-center gap-4 text-gray-300">
                           <span>{movie.release_date?.split("-")[0]}</span>
@@ -150,7 +151,7 @@ const MovieDetailsModal = ({ movie, isOpen, onClose }) => {
                                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                                 : "/no-movie.png"
                             }
-                            alt={movie.title}
+                            alt={getMovieTitle(movie)}
                             className="w-full rounded-lg shadow-lg"
                           />
                         </div>
@@ -163,9 +164,7 @@ const MovieDetailsModal = ({ movie, isOpen, onClose }) => {
                               Trama
                             </h3>
                             <p className="text-gray-300 leading-relaxed">
-                              {movieDetails?.overview ||
-                                movie.overview ||
-                                "Trama non disponibile"}
+                              {getMovieOverview(movieDetails || movie)}
                             </p>
                           </div>
 

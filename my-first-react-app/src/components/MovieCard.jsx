@@ -1,7 +1,15 @@
 import React from "react";
+import { getMovieTitle } from "../utils/italianContent.js";
 
 const MovieCard = ({
-  movie: { title, vote_average, poster_path, release_date, original_language },
+  movie: {
+    title,
+    original_title,
+    vote_average,
+    poster_path,
+    release_date,
+    original_language,
+  },
   onClick,
 }) => {
   return (
@@ -15,11 +23,13 @@ const MovieCard = ({
             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
             : "/no-movie.png"
         }
-        alt={title}
+        alt={getMovieTitle({ title, original_title })}
         className="rounded-lg h-auto w-full"
       />
       <div className="mt-4">
-        <h3 className="text-white font-bold text-base line-clamp-1">{title}</h3>
+        <h3 className="text-white font-bold text-base line-clamp-1">
+          {getMovieTitle({ title, original_title })}
+        </h3>
 
         <div className="mt-2 flex flex-row items-center flex-wrap gap-2">
           <div className="flex flex-row items-center gap-1">

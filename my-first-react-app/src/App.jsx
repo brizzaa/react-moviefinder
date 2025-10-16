@@ -6,14 +6,12 @@ import Filter from "./components/Filter";
 import MovieDetailsModal from "./components/MovieDetailsModal";
 import { updateSearchCount, getTrendingMovies } from "./appwrite.js";
 import { useDebounce } from "react-use";
+import { getMovieTitle, getMovieOverview } from "./utils/italianContent.js";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMBD_API_KEY;
 
 if (!API_KEY || API_KEY === "undefined") {
-  console.warn(
-    "TMDB API key is not configured. Please set VITE_TMBD_API_KEY in your environment variables."
-  );
 }
 
 const API_OPTIONS = {
@@ -55,6 +53,8 @@ const App = () => {
 
   const buildApiUrl = (query = "", filters = {}, page = 1) => {
     const params = new URLSearchParams();
+
+    params.append("language", "it-IT");
 
     const hasFilters =
       filters.genres?.length > 0 ||
@@ -115,9 +115,7 @@ const App = () => {
       filters.sortBy !== "popularity.desc";
 
     if (query && hasFilters) {
-      console.warn(
-        "TMDB API doesn't support text search with filters. Showing filtered results instead of search results."
-      );
+      console.warn("NON ANCORA IMPLEMENTATO");
     }
     try {
       const endpoint = buildApiUrl(query, filters, page);
@@ -142,14 +140,13 @@ const App = () => {
       }
 
       setMovieList(data.results || []);
-      setTotalPages(Math.min(data.total_pages || 1, 500)); // TMDB max 500 pages
+      setTotalPages(Math.min(data.total_pages || 1, 500));
 
       if (query && data.results && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
     } catch (error) {
       console.error("Error fetching movies:", error);
-      setErrorMessage(error.message || "Errore nel recupero dei film");
     } finally {
       setIsLoading(false);
     }
@@ -166,7 +163,7 @@ const App = () => {
 
   const handleFiltersChange = (newFilters) => {
     setActiveFilters(newFilters);
-    setCurrentPage(1); // Reset to first page when filters change
+    setCurrentPage(1);
   };
 
   const handleSidebarToggle = (isOpen) => {
@@ -195,7 +192,6 @@ const App = () => {
     <main>
       <div className="bg-hero-pattern w-full h-screen bg-center bg-cover absolute z-0" />
       <div className="flex min-h-screen">
-        {/* Left tab toggle when sidebar is closed */}
         {!sidebarOpen && (
           <button
             aria-label="Apri filtri"
@@ -335,7 +331,6 @@ const App = () => {
         </div>
       </div>
 
-      {/* Movie Details Modal */}
       <MovieDetailsModal
         movie={selectedMovie}
         isOpen={modalOpen}
