@@ -1,6 +1,15 @@
 # MovieFinder
 
-Provala ora !! => https://react-moviefinder-orpin.vercel.app/
+Provala ora !! https://react-moviefinder-orpin.vercel.app/
+
+## Obiettivi Personali e idee dietro al progetto
+
+- in questo progetto volevo mettermi alla prova e imparare react ; lo scheletro di questo
+  progetto è frutto di un tutorial che avevo visto un po di tempo fa. Per quanto interessante era
+  molto poco in depth per quanto riguarda quelle che erano le best practices e la gestione dei
+  componenti con questo framework. Concetti come fetching e gestione errori; come si struttura
+  bene un componente; le props gli stati e il ciclo di vita di un componente React oppure la gestione
+  eventi.
 
 ## Ricerca Film
 
@@ -13,7 +22,7 @@ Provala ora !! => https://react-moviefinder-orpin.vercel.app/
 
 - **Top 5 film più cercati**: Vedi i film più popolari tra gli utenti
 - **Aggiornamento automatico**: Le statistiche si aggiornano in tempo reale
-- **Conteggio ricerche**: Ogni ricerca viene tracciata nel database
+- **Conteggio ricerche**: Ogni ricerca o click su movie si registra nel database
 
 ## Interfaccia Utente
 
