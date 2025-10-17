@@ -1,18 +1,18 @@
 export default function Search({ searchTerm, setSearchTerm }) {
   return (
-    <div className="w-full bg-light-100/5 px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto">
+    <div className="w-full bg-light-100/5 px-3 py-2 sm:px-4 sm:py-3 rounded-lg mt-6 sm:mt-8 lg:mt-10 max-w-3xl mx-auto">
       <div className="relative flex items-center">
         <img
           src="./search.svg"
           alt="search icon"
-          className="absolute left-2 h-5 w-5"
+          className="absolute left-2 h-4 w-4 sm:h-5 sm:w-5"
         />
         <input
           type="text"
           placeholder="Cerca un film..."
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
-          className="w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-hidden"
+          className="w-full bg-transparent py-2 sm:pr-10 pl-8 sm:pl-10 text-sm sm:text-base text-gray-200 placeholder-light-200 outline-hidden"
         />
       </div>
     </div>

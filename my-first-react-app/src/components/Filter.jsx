@@ -142,7 +142,7 @@ const Filter = ({
 
   return (
     <div
-      className={`w-full md:w-80 bg-dark-100/90 backdrop-blur-sm border-r border-light-100/20 fixed left-0 top-0 h-full z-50 overflow-y-auto transition-transform duration-300 ease-in-out ${
+      className={`w-full sm:w-72 md:w-80 bg-dark-100/90 backdrop-blur-sm border-r border-light-100/20 fixed left-0 top-0 h-full z-50 overflow-y-auto transition-transform duration-300 ease-in-out ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -158,9 +158,11 @@ const Filter = ({
         </button>
       </div>
 
-      <div className="p-4 space-y-6">
+      <div className="p-3 sm:p-4 space-y-4 sm:space-y-6">
         <div>
-          <h3 className="text-white font-semibold text-lg mb-3">Generi</h3>
+          <h3 className="text-white font-semibold text-base sm:text-lg mb-2 sm:mb-3">
+            Generi
+          </h3>
           <div className="grid grid-cols-1 gap-2">
             {commonGenres.map((genre) => (
               <label

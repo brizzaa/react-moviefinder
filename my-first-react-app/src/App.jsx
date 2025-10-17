@@ -217,7 +217,7 @@ const App = () => {
 
         <div
           className={`flex-1 transition-all duration-300 ${
-            sidebarOpen ? "md:ml-80 ml-0" : "ml-0"
+            sidebarOpen ? "md:ml-80 md:w-auto w-full ml-0" : "w-full ml-0"
           }`}
         >
           <div className="px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10">
@@ -291,13 +291,14 @@ const App = () => {
                   </ul>
 
                   {totalPages > 1 && (
-                    <div className="flex justify-center items-center gap-4 mt-8">
+                    <div className="flex justify-center items-center gap-4 sm:gap-6 lg:gap-8 mt-8">
                       <button
                         onClick={() =>
                           setCurrentPage((prev) => Math.max(prev - 1, 1))
                         }
                         disabled={currentPage === 1 || isLoading}
-                        className="flex items-center gap-2 px-4 py-2 bg-dark-100/50 border border-light-100/20 rounded-lg text-white hover:bg-dark-100/70 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-2 px-4 py-2
+                        sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-dark-100/50 border border-light-100/20 rounded-lg text-white hover:bg-dark-100/70 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span>←</span>
                         Precedente
