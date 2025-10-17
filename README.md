@@ -4,12 +4,13 @@ Provala ora !! https://react-moviefinder-orpin.vercel.app/
 
 ## Obiettivi Personali e idee dietro al progetto
 
-- in questo progetto volevo mettermi alla prova e imparare react ; lo scheletro di questo
+- In questo progetto volevo mettermi alla prova e imparare react (spoiler: non è cosi impossibile!); lo scheletro di questo
   progetto è frutto di un tutorial che avevo visto un po di tempo fa. Per quanto interessante era
   molto poco in depth per quanto riguarda quelle che erano le best practices e la gestione dei
   componenti con questo framework. Concetti come fetching e gestione errori; come si struttura
   bene un componente; le props gli stati e il ciclo di vita di un componente React oppure la gestione
   eventi.
+  Certo ha solo filtraggio; fetch e show degli elementi ; ma mi ha dato le basi per capire bene i fondamenti di quello che è questo enorme framework e ora più che mai mi incuriosice da morire.
 
 ## Ricerca Film
 
